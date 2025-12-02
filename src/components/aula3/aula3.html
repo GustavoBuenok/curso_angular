@@ -1,0 +1,34 @@
+<!-- <div *ngIf="exibirConteudo">Conteudo</div>
+<button (click)="exibirConteudo = !exibirConteudo">Toggle</button> -->
+
+<!-- <section>
+  <h1 *ngIf="exibirConteudo">Conteudo</h1>
+  <br>
+  <div class="example-button-row">
+    <button (click)="exibirConteudo = !exibirConteudo" matButton="elevated" >Toggle</button>
+  </div>
+</section> -->
+
+<!-- <ul>
+    <li *ngFor="let produto of produtos">{{produto}}</li>
+</ul> -->
+
+<!-- <mat-list>
+ <mat-list-item *ngFor="let produto of produtos">{{produto}}</mat-list-item>
+</mat-list>
+
+{{dataAtual | date:'dd/MM/yyyy'}}
+{{preco | currency: 'BRL'}} -->
+
+<mat-list>
+  <ng-container *ngFor="let produto of produtos">
+    <mat-list-item [ngClass]="produto.emEstoque ? 'em-estoque' : 'sem-estoque'">
+
+      {{ produto.nome }} - R$ {{ produto.preco }} - {{produto.emEstoque}}
+
+    </mat-list-item>
+  </ng-container>
+</mat-list>
+
+
+
