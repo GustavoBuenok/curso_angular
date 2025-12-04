@@ -1,29 +1,45 @@
+
 import { Component, inject } from '@angular/core';
 import { AuthService } from '../services/auth-service';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
+import { FormControl, FormGroup, FormsModule, ReactiveFormsModule, Validators } from '@angular/forms';
 import { RouterModule } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
 import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { RippleModule } from 'primeng/ripple';
+import { AppFloatingConfigurator } from '../../layout/component/app.floatingconfigurator';
+import { CommonModule } from '@angular/common';
+import { PanelModule } from 'primeng/panel';
+import { CardModule } from 'primeng/card';
+
+
 
 
 @Component({
   selector: 'app-login',
-  imports: [ButtonModule],
+  imports: [ButtonModule ,FormsModule, RouterModule, CheckboxModule, InputTextModule, PasswordModule, RippleModule, AppFloatingConfigurator, ReactiveFormsModule, CommonModule, PanelModule, CardModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
 export class Login {
   private authService = inject(AuthService);
   private router = inject(Router)
+   formLogin = new FormGroup({
+    email: new FormControl('', [Validators.required, Validators.email]),
+    senha: new FormControl('', [Validators.required, Validators.minLength(6)])
+   });
 
-  fazerLogin() {
-    this.authService.login();
-    alert('Logado com sucesso!');
-    this.router.navigate(['/dashboard'])
+  entrar() {
+    if(this.formLogin.valid){
+      const {email, senha} = this.formLogin.value;
+      const sucesso = this.authService.login(email!, senha!);
+
+      if(!sucesso){
+        alert('Usuário ou senha incorretos!');
+      }
+    }
 
   }
 }

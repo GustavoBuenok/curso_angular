@@ -1,22 +1,28 @@
-import { Injectable } from '@angular/core';
+import { inject, Injectable } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  private loggedIn = false;
+  private router = inject(Router)
 
-  login(){
-    this.loggedIn = true;
-    sessionStorage.setItem('token', 'abc-123-token');
+  login(email: string, senha: string): boolean {
+    if(email === 'admin@email.com' && senha === '123456'){
+      sessionStorage.setItem('token', 'abc-123-token');
+      this.router.navigate(['/home']);
+      return true;
+    }
+    return false
   }
+
   logout(){
-    this.loggedIn = false;
-    sessionStorage.clear();
+    localStorage.removeItem('token')
+    this.router.navigate(['/login']);
   }
 
   estaLogado(): boolean {
-    return this.loggedIn || !!sessionStorage.getItem('token')
+    return !!sessionStorage.getItem('token')
   }
 
   
