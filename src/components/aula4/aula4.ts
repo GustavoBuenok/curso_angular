@@ -1,4 +1,4 @@
-import { NgFor } from '@angular/common';
+import { CommonModule, NgFor } from '@angular/common';
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { MatButton, MatButtonModule } from '@angular/material/button';
@@ -12,7 +12,7 @@ interface Atividade {
 
 @Component({
   selector: 'app-aula4',
-  imports: [ MatListModule, MatButtonModule, MatFormField, MatLabel, MatInput, FormsModule],
+  imports: [ MatListModule, MatButtonModule, MatFormField, MatLabel, MatInput, FormsModule, CommonModule],
   templateUrl: './aula4.html',
   styleUrl: './aula4.scss',
 })
