@@ -3,6 +3,7 @@ import { Home } from '../components/home/home';
 import { Login } from '../components/login/login';
 import { Dashboard } from '../components/dashboard/dashboard';
 import { authGuardGuard } from '../components/guards/auth-guard-guard';
+import { Lista } from '../components/lista/lista';
 
 export const routes: Routes = [
     {
@@ -20,6 +21,12 @@ export const routes: Routes = [
         component: Home,
         canActivate: [authGuardGuard]
     },
+    {
+        path: 'lista',
+        component: Lista,
+        canActivate: [authGuardGuard]
+    },
+
 
     {
         path: 'dashboard',

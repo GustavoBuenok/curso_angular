@@ -9,7 +9,6 @@ import { CheckboxModule } from 'primeng/checkbox';
 import { InputTextModule } from 'primeng/inputtext';
 import { PasswordModule } from 'primeng/password';
 import { RippleModule } from 'primeng/ripple';
-import { AppFloatingConfigurator } from '../../layout/component/app.floatingconfigurator';
 import { CommonModule } from '@angular/common';
 import { PanelModule } from 'primeng/panel';
 import { CardModule } from 'primeng/card';
@@ -19,7 +18,7 @@ import { CardModule } from 'primeng/card';
 
 @Component({
   selector: 'app-login',
-  imports: [ButtonModule ,FormsModule, RouterModule, CheckboxModule, InputTextModule, PasswordModule, RippleModule, AppFloatingConfigurator, ReactiveFormsModule, CommonModule, PanelModule, CardModule],
+  imports: [ButtonModule ,FormsModule, RouterModule, CheckboxModule, InputTextModule, PasswordModule, RippleModule, ReactiveFormsModule, CommonModule, PanelModule, CardModule],
   templateUrl: './login.html',
   styleUrl: './login.scss',
 })
@@ -33,12 +32,17 @@ export class Login {
 
   entrar() {
     if(this.formLogin.valid){
-      const {email, senha} = this.formLogin.value;
-      const sucesso = this.authService.login(email!, senha!);
-
-      if(!sucesso){
-        alert('Usuário ou senha incorretos!');
+      const email = this.formLogin.get('email')!.value!;
+      const senha = this.formLogin.get('senha')!.value!;
+      this.authService.login(email, senha).subscribe(sucesso => {
+        if(sucesso){
+          this.router.navigate(['/lista'])
       }
+      });
+
+      
+    } else {
+      this.formLogin.markAllAsTouched();
     }
 
   }

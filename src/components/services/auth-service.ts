@@ -25,6 +25,6 @@ logout() {
   this.router.navigate(['/login']);
 }
 estaLogado(): boolean {
-  return !!sessionStorage.getItem('token')
+  return !!localStorage.getItem('token')
 }
 }

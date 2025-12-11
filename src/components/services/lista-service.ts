@@ -5,7 +5,7 @@ export interface Tarefa {
   id: string;
   titulo: string;
   data: string;
-  concluida: boolean;
+  status: boolean;
 }
 
 
@@ -21,11 +21,17 @@ export class ListaService {
   }
 
   adicionar(titulo: string): Observable<Tarefa> {
-    const novaTarefa = {titulo, concluida: false};
-    return this.http.post<Tarefa>(this.apiUrl, novaTarefa);
-  }
+  const novaTarefa = {
+    titulo,
+    data: new Date().toISOString(),
+    status: false
+  };
+  return this.http.post<Tarefa>(this.apiUrl, novaTarefa);
+}
+
 
   remover(id: string): Observable<void> {
-    return this.http.delete<void>('${this.apiUrl}/${id}')
-  }
+  return this.http.delete<void>(`${this.apiUrl}/${id}`);
+}
+
 }
