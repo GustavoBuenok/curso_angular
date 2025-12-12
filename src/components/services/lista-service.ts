@@ -34,4 +34,9 @@ export class ListaService {
   return this.http.delete<void>(`${this.apiUrl}/${id}`);
 }
 
+atualizar(tarefa: Tarefa): Observable<Tarefa> {
+  return this.http.put<Tarefa>(`${this.apiUrl}/${tarefa.id}`, tarefa);
+}
+
+
 }

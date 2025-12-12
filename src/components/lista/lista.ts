@@ -6,10 +6,14 @@ import { InputTextModule } from 'primeng/inputtext';
 import { ListaService, Tarefa } from '../../components/services/lista-service';
 import { MatTableModule } from '@angular/material/table';
 import {MatIconModule} from '@angular/material/icon';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
+
+
 
 @Component({
   selector: 'app-lista',
-  imports: [FormsModule, CommonModule, MatTableModule, ButtonModule, InputTextModule, MatIconModule],
+  imports: [FormsModule, CommonModule, MatTableModule, ButtonModule, InputTextModule, MatIconModule, MatFormFieldModule, MatSelectModule, NgFor],
   templateUrl: './lista.html',
   styleUrl: './lista.scss',
 })
@@ -18,6 +22,11 @@ export class Lista implements OnInit{
 novoTitulo = '';
 tarefas: Tarefa[] = [];
 colunas = ['titulo', 'status', 'acoes'];
+statusOptions = [
+  { value: true, label: 'Concluída' },
+  { value: false, label: 'Pendente' }
+];
+
 
 ngOnInit(): void {
   this.carregarTarefas()
@@ -38,11 +47,17 @@ ngOnInit(): void {
 
     });
   }
-  deletar(tarefa: Tarefa) {
-  this.service.remover(tarefa.id).subscribe(() => {
+  deletar(id: string) {
+  this.service.remover(id).subscribe(() => {
     this.carregarTarefas();
   });
 }
+
+salvarStatus(tarefa: Tarefa) {
+  this.service.atualizar(tarefa).subscribe();
+}
+
+
 
 }
  
