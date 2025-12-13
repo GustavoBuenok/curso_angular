@@ -1,0 +1,17 @@
+.spacer {
+  flex: 1 1 auto;
+}
+
+a {
+  color: white;
+  text-decoration: none;
+
+  &.mat-button {
+    font-weight: 500;
+  }
+}
+
+.logo {
+  font-size: 20px;
+  font-weight: bold;
+}

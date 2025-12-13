@@ -1,0 +1,26 @@
+<div class="center-container">
+  <p-card header="Cadastre-se" class="w-full sm:w-72 p-4">
+
+    <form [formGroup]="formRegister" (ngSubmit)="cadastrar()" class="flex flex-col gap-4">
+
+      <div class="flex flex-col gap-1">
+        <input pInputText placeholder="Email" type="email" formControlName="email" />
+        <span *ngIf="formRegister.get('email')?.invalid && formRegister.get('email')?.touched" class="p-error">
+          Email inválido
+        </span>
+      </div>
+
+      <div class="flex flex-col gap-1">
+        <input pInputText placeholder="Senha" type="password" formControlName="senha" />
+        <span *ngIf="formRegister.get('senha')?.invalid && formRegister.get('senha')?.touched" class="p-error">
+          Senha inválida
+        </span>
+      </div>
+
+      <button pButton severity="secondary" type="submit" label="cadastrar"></button>
+
+    </form>
+
+  </p-card>
+</div>
+

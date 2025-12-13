@@ -5,32 +5,19 @@
       "email": "admin@email.com",
       "senha": "123456",
       "nome": "Admin"
+    },
+    {
+      "id": "23dc",
+      "email": "gustavobuenok@gmail.com",
+      "senha": "123456"
     }
   ],
   "tarefas": [
     {
-      "id": "1",
-      "titulo": "Notebook",
-      "data": "08/12/2025",
-      "status": true
-    },
-    {
-      "id": "b5eb",
-      "titulo": "codar",
-      "data": "2025-12-12T01:39:26.507Z",
-      "status": false
-    },
-    {
-      "id": "3344",
-      "titulo": "fazer comida",
-      "data": "2025-12-12T01:39:48.665Z",
-      "status": false
-    },
-    {
       "id": "d4e9",
       "titulo": "ler",
       "data": "2025-12-12T01:39:54.691Z",
-      "status": false
+      "status": true
     }
   ]
 }

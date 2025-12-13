@@ -4,6 +4,7 @@ import { Login } from '../components/login/login';
 import { Dashboard } from '../components/dashboard/dashboard';
 import { authGuardGuard } from '../components/guards/auth-guard-guard';
 import { Lista } from '../components/lista/lista';
+import { Register } from '../components/register/register';
 
 export const routes: Routes = [
     {
@@ -25,6 +26,11 @@ export const routes: Routes = [
         path: 'lista',
         component: Lista,
         canActivate: [authGuardGuard]
+    },
+    {
+        path: 'Register',
+        component: Register
+    
     },
 
 

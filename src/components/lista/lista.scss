@@ -1,0 +1,14 @@
+
+@import "primeicons/primeicons.css";
+
+.delete-btn {
+  background-color: #e53935; /* vermelho */
+  color: white;              /* ícone branco */
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;        /* deixa redondo */
+  
+  &:hover {
+    background-color: #d32f2f;
+  }
+}
