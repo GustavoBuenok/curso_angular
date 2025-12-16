@@ -33,4 +33,12 @@ register(usuario: any): Observable<any> {
   return this.http.post(`${this.apiUrl}`, usuario)
 }
 
+checarEmail(email: string): Observable<boolean> {
+  return this.http.get<any[]>(`${this.apiUrl}?email=${email}`)
+    .pipe(
+      map(usuarios => usuarios.length > 0) // retorna true se já existe
+    );
+}
+
+
 }

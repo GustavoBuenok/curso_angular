@@ -1,16 +1,21 @@
-import { Component } from '@angular/core';
-import {MatIconModule} from '@angular/material/icon';
-import {MatButtonModule} from '@angular/material/button';
-import {MatToolbarModule} from '@angular/material/toolbar';
-import { RouterLink, RouterModule } from '@angular/router';
-import { MatMenuModule } from '@angular/material/menu';
+import { Component, inject } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthService } from '../services/auth-service';
 
 @Component({
   selector: 'app-home',
-  imports: [MatIconModule, MatButtonModule, MatToolbarModule, RouterLink, MatMenuModule],
   templateUrl: './home.html',
-  styleUrl: './home.scss',
+  styleUrls: ['./home.scss']
 })
 export class Home {
+  private router = inject(Router);
+  private authService = inject(AuthService);
 
+  irParaLista() {
+    this.router.navigate(['/lista']);
+  }
+
+  logout() {
+    this.authService.logout(); // remove o token e já redireciona
+  }
 }

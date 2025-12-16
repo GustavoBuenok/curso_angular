@@ -1,26 +1,48 @@
-<div class="center-container">
-  <p-card header="Cadastre-se" class="w-full sm:w-72 p-4">
+<div class="container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Cadastre-se</h1>
+      <p>Crie sua conta para começar a usar</p>
+    </div>
 
-    <form [formGroup]="formRegister" (ngSubmit)="cadastrar()" class="flex flex-col gap-4">
+    <form [formGroup]="formRegister" (ngSubmit)="cadastrar()">
 
-      <div class="flex flex-col gap-1">
-        <input pInputText placeholder="Email" type="email" formControlName="email" />
-        <span *ngIf="formRegister.get('email')?.invalid && formRegister.get('email')?.touched" class="p-error">
+      <div class="form-group">
+        <input
+          pInputText
+          type="email"
+          formControlName="email"
+          placeholder="Email"
+          [class.error]="formRegister.get('email')?.invalid && formRegister.get('email')?.touched"
+        />
+        <span *ngIf="formRegister.get('email')?.invalid && formRegister.get('email')?.touched" class="error-message">
           Email inválido
         </span>
       </div>
 
-      <div class="flex flex-col gap-1">
-        <input pInputText placeholder="Senha" type="password" formControlName="senha" />
-        <span *ngIf="formRegister.get('senha')?.invalid && formRegister.get('senha')?.touched" class="p-error">
-          Senha inválida
+      <div class="form-group">
+        <input
+          pInputText
+          type="password"
+          formControlName="senha"
+          placeholder="Senha"
+          [class.error]="formRegister.get('senha')?.invalid && formRegister.get('senha')?.touched"
+        />
+        <span *ngIf="formRegister.get('senha')?.invalid && formRegister.get('senha')?.touched" class="error-message">
+          Senha deve ter no mínimo 6 caracteres
         </span>
       </div>
 
-      <button pButton severity="secondary" type="submit" label="cadastrar"></button>
+      <div *ngIf="errorMessage()" class="alert-error">{{ errorMessage() }}</div>
+      <div *ngIf="successMessage()" class="alert-success">{{ successMessage() }}</div>
 
+      <button type="submit" class="btn-primary" [disabled]="formRegister.invalid">
+        Cadastrar
+      </button>
     </form>
 
-  </p-card>
+    <div class="toggle-mode">
+      <a routerLink="/login" class="btn-link">Já tem uma conta? Entre</a>
+    </div>
+  </div>
 </div>
-

@@ -1,4 +1,4 @@
-<div class="login-container">
+<!-- <div class="login-container">
   <mat-card class="login-card">
 
     <mat-card-title>Login</mat-card-title>
@@ -32,4 +32,48 @@
     </form>
 
   </mat-card>
+</div> -->
+
+<div class="container">
+  <div class="login-card">
+    <div class="login-header">
+      <h1>Bem-vindo</h1>
+      <p>Entre na sua conta</p>
+    </div>
+
+    <form [formGroup]="formLogin" (ngSubmit)="entrar()">
+
+      <!-- EMAIL -->
+      <div class="form-group">
+        <label>Email</label>
+        <input type="email" formControlName="email" placeholder="seu@email.com"
+          [class.error]="formLogin.get('email')?.invalid && formLogin.get('email')?.touched" />
+        <span class="error-message" *ngIf="formLogin.get('email')?.touched && formLogin.get('email')?.invalid">
+          Email inválido
+        </span>
+      </div>
+
+      <!-- SENHA -->
+      <div class="form-group">
+        <label>Senha</label>
+        <input type="password" formControlName="senha" placeholder="••••••••"
+          [class.error]="formLogin.get('senha')?.invalid && formLogin.get('senha')?.touched" />
+        <span class="error-message" *ngIf="formLogin.get('senha')?.touched && formLogin.get('senha')?.invalid">
+          Senha deve ter no mínimo 6 caracteres
+        </span>
+      </div>
+
+      <!-- BOTÃO -->
+      <button type="submit" class="btn-primary" [disabled]="formLogin.invalid">
+        Entrar
+      </button>
+
+      <div class="register-link">
+  <span>Não tem uma conta? </span>
+  <a routerLink="/Register">Cadastre-se</a>
+</div>
+
+
+    </form>
+  </div>
 </div>

@@ -1,13 +1,22 @@
-<mat-toolbar color="primary">
+<ng-container *ngIf="!router.url.includes('login'); else loginLayout">
 
-  <span class="logo">MeuApp</span>
+  <!-- Navbar SOMENTE fora do login -->
+  <mat-toolbar color="primary">
+    <span class="logo">MeuApp</span>
 
-  <span class="spacer"></span>
+    <span class="spacer"></span>
 
-  <a mat-button routerLink="/">Home</a>
-  <a mat-button routerLink="/dashboard">Dashboard</a>
-  <a mat-button routerLink="/Register">Cadastro</a>
-  <a mat-button routerLink="/lista">Lista</a>
+    <a mat-button routerLink="/home">Home</a>
+    <a mat-button routerLink="/dashboard">Dashboard</a>
+    <a mat-button routerLink="/Register">Cadastro</a>
+    <a mat-button routerLink="/lista">Lista</a>
+  </mat-toolbar>
 
-</mat-toolbar>
-<router-outlet></router-outlet>
+  <router-outlet></router-outlet>
+
+</ng-container>
+
+<!-- Layout exclusivo do login -->
+<ng-template #loginLayout>
+  <router-outlet></router-outlet>
+</ng-template>

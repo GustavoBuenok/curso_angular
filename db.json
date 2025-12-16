@@ -10,6 +10,11 @@
       "id": "23dc",
       "email": "gustavobuenok@gmail.com",
       "senha": "123456"
+    },
+    {
+      "id": "6f99",
+      "email": "gustavobueno@gmail.com",
+      "senha": "123456"
     }
   ],
   "tarefas": [
@@ -18,6 +23,30 @@
       "titulo": "ler",
       "data": "2025-12-12T01:39:54.691Z",
       "status": true
+    },
+    {
+      "id": "3c12",
+      "titulo": "codar",
+      "data": "2025-12-15T22:58:53.594Z",
+      "status": false
+    },
+    {
+      "id": "5c1f",
+      "titulo": "treinar",
+      "data": "2025-12-15T22:59:02.498Z",
+      "status": false
+    },
+    {
+      "id": "8124",
+      "titulo": "correr",
+      "data": "2025-12-15T23:05:16.682Z",
+      "status": false
+    },
+    {
+      "id": "6190",
+      "titulo": "estudar",
+      "data": "2025-12-15T23:05:21.887Z",
+      "status": false
     }
   ]
 }
