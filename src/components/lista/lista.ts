@@ -1,4 +1,4 @@
-import { Component, inject, OnInit } from '@angular/core';
+import { ChangeDetectorRef, Component, inject, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { CommonModule, NgFor } from '@angular/common';
 import { ListaService, Tarefa } from '../../components/services/lista-service';
@@ -18,12 +18,14 @@ import { ListaService, Tarefa } from '../../components/services/lista-service';
 })
 export class Lista implements OnInit {
   private service = inject(ListaService);
+  private cdr = inject(ChangeDetectorRef);
 
   novoTitulo = '';
   tarefas: Tarefa[] = [];
 
   ngOnInit(): void {
     this.carregarTarefas();
+    this.cdr.detectChanges();
   }
 
   carregarTarefas() {

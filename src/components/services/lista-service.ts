@@ -35,7 +35,7 @@ export class ListaService {
 }
 
 atualizar(tarefa: Tarefa): Observable<Tarefa> {
-  return this.http.put<Tarefa>(`${this.apiUrl}/${tarefa.id}`, tarefa);
+  return this.http.put<Tarefa>(`${this.apiUrl}/${tarefa.id}`,  tarefa);
 }
 
 

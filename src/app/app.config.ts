@@ -7,7 +7,6 @@ import Aura from '@primeuix/themes/aura';
 
 
 import { routes } from './app.routes';
-import { provideClientHydration, withEventReplay } from '@angular/platform-browser';
 import { provideHttpClient} from '@angular/common/http';
 
 export const appConfig: ApplicationConfig = {
@@ -15,7 +14,7 @@ export const appConfig: ApplicationConfig = {
     provideHttpClient(),
     provideBrowserGlobalErrorListeners(),
     provideZonelessChangeDetection(),
-    provideRouter(routes), provideClientHydration(withEventReplay()),
+    provideRouter(routes),
     provideAnimationsAsync(),
         providePrimeNG({
             theme: {
